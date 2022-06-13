@@ -23,7 +23,9 @@ def demande(id): #nbc = nombre de calcule a faire
         opp = rd.choice(['+','/','-','*'])
         calc = str(a) + opp + str(b)
         demande = str(id) + calc
+        print('*'*60)
         print('     Je suis le demandeur '+str(id)+' et je veux calculer :'+calc)
+        print('*'*60)
         entree.put(demande)
         time.sleep(1)
     
