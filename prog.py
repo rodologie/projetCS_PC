@@ -1,13 +1,12 @@
 import sys, os
 
-
-fct = input('Quel fichier voulez-vous executer ?')
-
 lst_FCT=['Calcul_PI.py','Course_Hippique_basique.py']
+print('Les fonctions disponibles sont:', lst_FCT)
+fct = input('Quel fichier voulez-vous executer (sans le .py)?')
+
+
 lst=[fct,'.py']
-print(lst)
 file = ''.join(lst)
-print(file)
 
 pid=os.fork()
 if pid == 0:
