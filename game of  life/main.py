@@ -89,17 +89,21 @@ if __name__ == "__main__" :
 #============= Formation de la grille ===============
     gr = Grille()
     gr.creerGrille(dimension,dimension)
+    gr.position_cells(dimension)
     gr.draw_grille()
-    #gr.position_cells(dimension)
+    
+    nb_generation = 20
+    for k in range(nb_generation) :
+        print('Génération : ', k)
+        gr.next_state(dimension)
     
  #============= Placements des cellules ===============   
-
     
-    nb_cell_alive_first = 15
-    for i in range(nb_cell_alive_first) :
-        cells = Cellules(dimension)
-        cells.draw(dimension, dimension)
-        
+    
+
+    cells = Cellules(dimension)
+    cells.draw(dimension, dimension)
+    
     
     
     # for i in range(Nb_process):  # Lancer Nb_process  processus
