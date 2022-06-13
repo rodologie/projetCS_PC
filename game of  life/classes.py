@@ -73,14 +73,13 @@ class Grille:
             print(i)
             
     
-    '''
+
     def position_cells(self,dim) : 
         cell = Cellules(dim)
         
-        for i in self.grid :
-            for k in range(dim) :
+        for k in self.coordonnees_position_cellules
                 
-                '''
+                
                 
                 
         
