@@ -3,10 +3,11 @@ import sys, os
 
 fct = input('Quel fichier voulez-vous executer ?')
 
-lst_FCT=['Calcul_PI.py']
+lst_FCT=['Calcul_PI.py','Course_Hippique_basique.py']
 lst=[fct,'.py']
+print(lst)
 file = ''.join(lst)
-
+print(file)
 
 pid=os.fork()
 if pid == 0:
