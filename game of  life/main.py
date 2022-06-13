@@ -93,13 +93,13 @@ if __name__ == "__main__" :
     #gr.position_cells(dimension)
     
  #============= Placements des cellules ===============   
-    cells = Cellules(dimension)
+
     
     nb_cell_alive_first = 15
-    for i in gr.grid :
-        for k in range(dimension) :
-            cells.draw(dimension, dimension)
-    
+    for i in range(nb_cell_alive_first) :
+        cells = Cellules(dimension)
+        cells.draw(dimension, dimension)
+        
     
     
     # for i in range(Nb_process):  # Lancer Nb_process  processus

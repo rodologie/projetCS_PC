@@ -41,7 +41,7 @@ class Cellules:
         gr = Grille()
         print(self.coordonnees_position_cellules)
         en_couleur(self.cell_alive_next)
-        gr.grid[self.cell_position_init_ligne][self.cell_position_init_colonne] = "#"
+        #gr.grid[self.cell_position_init_ligne][self.cell_position_init_colonne] = "#"
         en_couleur("\033[01;37m")
 
     def status(self) :
