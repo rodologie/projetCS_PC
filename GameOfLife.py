@@ -1,4 +1,3 @@
-from distutils.file_util import move_file  #ajouté par zsh macos 
 import multiprocessing as mp
 import random, time
 import numpy as np
@@ -124,10 +123,10 @@ class Cellule():
     def update(self, voisins):
         cellEnVie = 0
         for cellule in voisins:
-            if cellule.getEtat():
+            if cellule.getEtat() == True:
                 cellEnVie += 1
                 
-        if self.__actuel:
+        if self.__actuel == True :
             if cellEnVie < 2:
                 self.celluleTuee()
             elif cellEnVie > 3:
@@ -145,6 +144,5 @@ partie = Jeu(tHauteur,tLargeur)
 partie.Grille()
 
 while True:
-   partie.presentVersFutur()
-   time.sleep(0.2)
-                
+    partie.presentVersFutur()
+    time.sleep(2)
