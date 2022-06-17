@@ -7,6 +7,10 @@ import Course_Hippique_basique as ch
 
 
 class Jeu():
+    """
+    classe qui gere la grille.
+    chaque casse de la grille est une élélment de classe cellule
+    """
     def __init__(self, Hauteur, Largeur):
         self.__hauteurGrille = Hauteur
         self.__largeurGrille = Largeur
@@ -39,14 +43,14 @@ class Jeu():
         """
         ch.effacer_ecran()
         ch.curseur_invisible()
-        pos = 5
+        pos = 8
         for i in self.__grilleUsr:
             with self.__ferme:
-                ch.move_to(pos, 1)
+                ch.move_to(pos, 43)
                 ch.erase_line_from_beg_to_curs()
                 print(''.join(i))
             pos += 1
-        ch.move_to(pos + 5, 1)
+        ch.move_to(pos + 8, 1)
         
         
     
@@ -113,7 +117,6 @@ class Jeu():
             voisins.append(self.__grille[posLigne+1][posColonne-1])
         except IndexError:
             None
-        print(voisins)
         return voisins
     
     def presentVersFutur(self):
@@ -158,6 +161,7 @@ class Cellule():
         self.__etatSuivant = True
     
     def getEtat(self):
+        
         """
         getteur qui permet de savoir si la cellule est vivante ou décédée
 
@@ -167,6 +171,12 @@ class Cellule():
         return self.__actuel
     
     def update(self, voisins):
+        """
+        Pour chaque cellule, cette fonction va déterminer sur sur la prochaine grille la cellule sera toujours vivante ou non
+
+        Args:
+            voisins (liste): contient les voisins de la cellule testée
+        """
         cellEnVie = 0
         for cellule in voisins:
             if cellule.getEtat() == True:
@@ -177,11 +187,15 @@ class Cellule():
                 self.celluleTuee()
             elif cellEnVie > 3:
                 self.celluleTuee()
+
         else:
             if cellEnVie == 3:
                 self.celluleCreee()
     
     def prstVersFutur(self):
+        """
+        actualise la cellule en récupérant l'état de la cellule dans la mémoire
+        """
         self.__actuel = self.__etatSuivant
 
 tHauteur = int(input('quelle hauteur voulez-vous?'))
@@ -191,4 +205,4 @@ partie.Grille()
 
 while True:
     partie.presentVersFutur()
-    time.sleep(10)
+    time.sleep(0.5)
