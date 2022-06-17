@@ -78,9 +78,9 @@ def un_cheval(ma_ligne : int, keep_running) : # ma_ligne commence à 0
         erase_line_from_beg_to_curs()
         en_couleur(lyst_colors[ma_ligne%len(lyst_colors)])
         print('['+chr(ord('A')+ma_ligne)+']>>')
-
         col+=1
         places[i] = col
+        
         verrou.release()
         
         try : # En cas d'interruption
