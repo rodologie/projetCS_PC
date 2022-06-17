@@ -14,7 +14,7 @@ if pid == 0:
         print("vous executer l'exercice %s" %file)
         os.execlp('python3', 'python3', file )
     else:
-        print("Fichiers introuvable, vérifier l'orthographe")
+        print("Fichier introuvable, vérifier l'orthographe")
 else:
     os.wait()
     sys.exit(0)
