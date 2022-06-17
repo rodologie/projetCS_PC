@@ -15,7 +15,12 @@ for i in range(lstArg[0]):
     lstArg.append(cbcalc)
     
 def demande(id): 
+    """Créer aléatoirement un calcul et l'envoie au calculateur pour enfin le recevoir et afficher le résultat
 
+    Args:
+        id (str): L'id du demandeur, son numéro
+    """
+    
     for i in range(lstArg[int(id)+1]):
         a = rd.randint(1,10)
         b = rd.randint(1,10)
@@ -41,6 +46,12 @@ def demande(id):
             sortie.put(res)
 
 def calculateur(id):
+    """Fait le calcul qui lui à été envoyé
+
+    Args:
+        id (str): L'id du demandeur afin de la renvoyer dans le résultat pour identifier celui-ci avec la demande
+    """
+    
     verrou.acquire()
     calc1 = entree.get()
     fin_calc = str(id) + ' et je trouve ça : ' +  str(eval(calc1[1:]))
@@ -48,6 +59,8 @@ def calculateur(id):
     verrou.release()
 
 if __name__ == '__main__':
+    """Création des Queue et du verrou ainsi que lancement des processus
+    """
     
     entree = mp.Queue()
     sortie = mp.Queue()

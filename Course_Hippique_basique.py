@@ -69,18 +69,16 @@ def en_rouge() : print(CL_RED,end='') # Un exemple !
 def un_cheval(ma_ligne : int, keep_running) : # ma_ligne commence à 0
     global places
     col=1
-
+# pour effacer toute ma ligne
     while col < LONGEUR_COURSE and keep_running.value :
 
         verrou.acquire()
-
-        move_to(ma_ligne+1,col)         # pour effacer toute ma ligne
+        move_to(ma_ligne+1,col)         
         erase_line_from_beg_to_curs()
         en_couleur(lyst_colors[ma_ligne%len(lyst_colors)])
         print('['+chr(ord('A')+ma_ligne)+']>>')
         col+=1
         places[i] = col
-        
         verrou.release()
         
         try : # En cas d'interruption
@@ -89,27 +87,9 @@ def un_cheval(ma_ligne : int, keep_running) : # ma_ligne commence à 0
             pass
 #--------------------------------------------------
 
-# L'arbitre fait ça
-'''
-def arbitre():
-    premier = -1
-    while keep_running.value and premier !=  LONGEUR_COURSE:
-        global places
-        local_place = places[:]
-        premier = (max(local_place))
-        dernier = (min(local_place))
-        ligneP = local_place.index(premier)
-        ligneD = local_place.index(dernier)
-        verrou.acquire()
-        move_to(Nb_process+2,0)
-        erase_line_from_beg_to_curs()
-        print('Le cheval en tête est ', chr(ord('A')+ligneP))
-        move_to(Nb_process+3,0)
-        erase_line_from_beg_to_curs()
-        print('Le cheval en tête en partant de la fin est ', chr(ord('A')+ligneD))
-        verrou.release()
-'''
 def arbitre2():
+    """'L'arbitre qui regarde et affiche le premier et le dernier'
+    """
     premier = -1
     dernier =-1
     global P
@@ -128,7 +108,7 @@ def arbitre2():
             dernier = (min(local_place))
             ligneD = local_place.index(dernier)    
             move_to(Nb_process+3,0)
-            print('Le cheval en tête en partant de la fin est ', chr(ord('A')+ligneD))
+            print('Le cheval en dernier est ', chr(ord('A')+ligneD))
         verrou.release()
 
 #-----------------------------------------------
