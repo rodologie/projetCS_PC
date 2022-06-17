@@ -8,10 +8,10 @@ import random as rd
 lstOpe=[]
 
 lstArg = []
-lstArg.append(int(input('Combien de demandeur ? ')))
+lstArg.append(int(input('Combien de demandeur ? : ')))
 
 for i in range(lstArg[0]):
-    cbcalc = int(input('Combien de calcul pour le demandeur '))
+    cbcalc = int(input('Combien de calcul pour le demandeur '+str(i+1)+' : '))
     lstArg.append(cbcalc)
     
 def demande(id): 
@@ -23,7 +23,7 @@ def demande(id):
         calc = str(a) + opp + str(b)
         demande = str(id) + calc
         print('*'*60)
-        print('     Je suis le demandeur '+str(id)+' et je veux calculer :'+calc)
+        print('     Je suis le demandeur '+str(int(id)+1)+' et je veux calculer :'+calc)
         print('*'*60)
         entree.put(demande)
         time.sleep(1)
@@ -35,7 +35,7 @@ def demande(id):
         res = sortie.get()
         if res[0] == str(id) :
             print('-'*60)
-            print('Jai calculer la demande de ' + id + ' Je trouve ' + res[1:])
+            print('Jai calculer la demande de ' + str(int(id)+1) + res[1:])
             print('-'*60)
         else:
             sortie.put(res)
@@ -44,9 +44,6 @@ def calculateur(id):
     verrou.acquire()
     calc1 = entree.get()
     fin_calc = str(id) + ' et je trouve ça : ' +  str(eval(calc1[1:]))
-    
-
-    
     sortie.put(fin_calc)
     verrou.release()
 
