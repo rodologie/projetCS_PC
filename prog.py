@@ -1,6 +1,6 @@
 import sys, os
 
-lst_FCT=['Calcul_PI.py','Course_Hippique_basique.py', 'Calculs.py', 'Game_of_Life.py','Bille.py']
+lst_FCT=['Calcul_PI.py','Course_Hippique_basique.py', 'Calculs.py', 'Game_of_Life.py','Billes.py']
 print('Les fonctions disponibles sont:', lst_FCT)
 fct = input('Quel fichier voulez-vous executer (sans le .py)?')
 

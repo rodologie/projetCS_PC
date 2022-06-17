@@ -8,10 +8,10 @@ def travailleur(block,nbb,nbt,m):
         for i in range(m):
             print('     Je suis '+ str(nbt) +' Je necessite '+str(nbb)+' billes')
             demander(block,nbb)
-            print('Je suis '+str(nbt)+' et vais taffer')
+            print('Je suis '+str(nbt)+' et vais travailler')
             time.sleep(3)
             rendre(block,nbb)
-            print('     Je suis' + str(nbt) + ' Fini de taffer voici mes billes rendu '+str(nbb))
+            print('     Je suis' + str(nbt) + ' Fini de travailler voici mes billes rendu '+str(nbb))
 
 
 def demander(block,nbb):
