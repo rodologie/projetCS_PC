@@ -4,6 +4,14 @@ import random as rd
 
 
 def travailleur(block,nbb,nbt,m):
+    """Fonction qui régis les travailleurs 
+
+    Args:
+        block (Lock): Le verrou qui sécurise le fonctionnement
+        nbb (int): Nombre de bille que le travailleur a besoin
+        nbt (int): Numéro du travailleur
+        m (int): Nombre de fois qu'ils doivent travailler (non fonctionnel)
+    """
     while True :
         for i in range(m):
             print('     Je suis '+ str(nbt) +' Je necessite '+str(nbb)+' billes')
@@ -15,6 +23,12 @@ def travailleur(block,nbb,nbt,m):
 
 
 def demander(block,nbb):
+    """Permet de donner les billes s'il y en a asser
+
+    Args:
+        block (Lock): Le verrou qui sécurise le fonctionnement
+        nbb (int): Nombre de bille nécessaire au travailleur
+    """
     block.acquire()
     while billes.value < nbb:
         block.release()
@@ -24,11 +38,23 @@ def demander(block,nbb):
     block.release()
 
 def rendre(block,nbb):
+    """Permet de rendre les billes dans le 'pot' commun
+
+    Args:
+        block (Lock): Le verrou qui sécurise le fonctionnement
+        nbb (int): Nombre de bille rendu par le travailleur
+    """
     block.acquire()
     billes.value += nbb
     block.release()
 
 def controle(block,bille):
+    """Controle qu'il n'y ai pas de problème dans le nombre de bille totale (ps négatif et pas supérieur au nombre max)
+
+    Args:
+        block (Lock): Le verrou qui sécurise le fonctionnement
+        bille (int): Nombre initiale de bille 
+    """
     while True:
         block.acquire()
         if 0<=billes.value<=bille:

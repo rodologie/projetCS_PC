@@ -20,7 +20,7 @@ def demande(id):
     Args:
         id (str): L'id du demandeur, son numéro
     """
-
+    
     for i in range(lstArg[int(id)+1]):
         a = rd.randint(1,10)
         b = rd.randint(1,10)
