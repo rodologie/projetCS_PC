@@ -16,6 +16,9 @@ class Jeu():
     
     
     def Grille(self):
+        """
+        fonction qui met affiche la grille de eju
+        """
         for ligne in range(self.__hauteurGrille):
             lstLignePhoto = []
             lstLigne = []
@@ -31,6 +34,9 @@ class Jeu():
             self.__grilleUsr.append(lstLigne)
     
     def updateGrille(self):
+        """
+        fonction qui met à jour la grille de facon interne 
+        """
         ch.effacer_ecran()
         ch.curseur_invisible()
         pos = 5
@@ -45,12 +51,28 @@ class Jeu():
         
     
     def UpdateGrillleUsr(self, cellule, posLigne, posColonne):
+        
+        """
+        fonction qui met à jour la grille de l'utilisateur
+        """
+        
         if cellule.getEtat():
             self.__grilleUsr[posLigne][posColonne] = "0"
         else:
             self.__grilleUsr[posLigne][posColonne] = "x"
             
     def getVoisins(self, posLigne, posColonne):
+        """
+        fonction qui recupere le nombre de voisins vivant de chaque case afin de savoir si celui-ci
+            - vit toujours
+            - meurt
+            - revit
+        on utilise la méthode try/Except pour éviter le probleme du type IndexError lorsque l'on est sur les cellule au bord du tableau
+
+        Args:
+            posLigne (int): position de sa ligne
+            posColonne (_type_): position de sa colonne 
+        """
         voisins = []
         try:
             voisins.append(self.__grille[posLigne-1][posColonne-1])
@@ -91,10 +113,13 @@ class Jeu():
             voisins.append(self.__grille[posLigne+1][posColonne-1])
         except IndexError:
             None
-        
+        print(voisins)
         return voisins
     
     def presentVersFutur(self):
+        """
+        fonction qui met à jour la grille utilisateur en recuperant la grille stocké en interne
+        """
         for posLigne, ligne in enumerate(self.__grille):
             for posColonne, colonne in enumerate(ligne):
                 colonne.update(self.getVoisins(posLigne, posColonne))
@@ -106,18 +131,39 @@ class Jeu():
                     
 
 class Cellule():
+    """
+    classe qui gère chaque cellule de la grille
+    """
     
     def __init__(self, bool):
-            self.__actuel = bool
-            self.__etatSuivant = bool
+        """
+        chaque cellule est de type booléenne: vivante ou morte
+
+        Args:
+            bool (booleen): vivant / mort
+        """
+        self.__actuel = bool
+        self.__etatSuivant = bool
     
     def celluleTuee(self):
+        """
+        on tu ela cellule
+        """
         self.__etatSuivant = False
         
     def celluleCreee(self):
+        """
+        on fait revivre la cellule
+        """
         self.__etatSuivant = True
     
     def getEtat(self):
+        """
+        getteur qui permet de savoir si la cellule est vivante ou décédée
+
+        Returns:
+            booleen : vivant / mort
+        """
         return self.__actuel
     
     def update(self, voisins):
@@ -145,4 +191,4 @@ partie.Grille()
 
 while True:
     partie.presentVersFutur()
-    time.sleep(2)
+    time.sleep(10)
