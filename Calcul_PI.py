@@ -31,7 +31,7 @@ if __name__ == '__main__':
 
     mutex = mp.Lock() #On crée un verrou
     nb_total_iteration = 1000000
-    nb_process = 6 #On choisit d'utiliser 4 process
+    nb_process = 4 #On choisit d'utiliser 4 process
     mes_process = [0 for i in range(nb_process)] #on crée une liste de process
     valeur = mp.Value("i", 0) #On crée une variable globale
 
